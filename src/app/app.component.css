@@ -1,12 +1,37 @@
 .MyNavBar{
     /* to na wypadek */
+    padding: 2px;
+    background-color: #CAC1B0;
+
 }
 
 .NavElement{
-    display: inline;
+  
+    
 }
 
+.NavElementLink{
+    padding: 5px;
+    display: inline-block;
+    margin-left: 5px;
+    border-radius: 20px;
+    background-color: inherit ;
+    transition: background-color 1s;
+    color: inherit;
+}
+
+.NavElementLink:hover{
+    background-color: #8693A0 ;
+    transition: background-color 1s;
+}
+
+
 a{
+    text-decoration: none;
+    
+}
+
+a:hover{
     text-decoration: none;
     
 }
