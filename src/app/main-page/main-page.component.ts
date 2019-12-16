@@ -12,4 +12,9 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  EnterBtnClick(){
+    window.location.href="bookcollection";
+  }
+
+
 }

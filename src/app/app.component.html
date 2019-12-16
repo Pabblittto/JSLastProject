@@ -4,13 +4,21 @@
             Home
         </div>
     </a>
-    <a href="#" class="NavElementLink">
-        <div class="NavElement" >
+    <a routerLink="bookcollection" class="NavElementLink">
+        <div class="NavElement">
             Book Collection
+        </div>
+    </a>
+    <a routerLink="authorlist" class="NavElementLink">
+        <div class="NavElement">
+            Author List
         </div>
     </a>
 </div>
 <div><!-- main content-->
     <router-outlet></router-outlet>
+    <footer >
+        Jakub Nicewicz & Paweł Łaskarzewski 2019
+    </footer>
 </div>
       

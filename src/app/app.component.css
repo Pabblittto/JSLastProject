@@ -35,3 +35,9 @@ a:hover{
     text-decoration: none;
     
 }
+
+footer{
+    height: 40px;
+    border-top: 2px black solid;
+    text-align: center;
+}

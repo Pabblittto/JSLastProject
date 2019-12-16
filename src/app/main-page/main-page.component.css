@@ -1,3 +1,21 @@
 .MainImg{
     width: 100%;
 }
+
+.CenterText{
+    position: relative;
+    top: 10vw;
+    color: rgb(255, 251, 0);
+}
+
+.DivOnImg{
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    height: 50%;
+}
+.BtnCenter{
+    position: relative;
+    top: 11vw;
+    width: 100px;
+}
