@@ -1,1 +1,46 @@
-<p>book-collection works!</p>
+<div class="container">
+    <div class="p-1">
+        <div class="row pb-1 Panels">
+            <h4 class="col-auto">Book Collection</h4>
+            <button class="btn btn-xs btn-primary col-auto mr-1" (click)="SortBtnClick()">Sort <i class="fas" [ngClass]="{'fa-angle-down':HiddenSortPanel,'fa-angle-up':!HiddenSortPanel}"></i></button>
+            <button class="btn btn-xs btn-primary col-auto" (click)="SearchBtnClick()">Search <i class="fas" [ngClass]="{'fa-angle-down':HiddenSearchPanel,'fa-angle-up':!HiddenSearchPanel}"></i></button><!--fa-angle-up-->
+
+        </div>
+        <div class="row Panels Hidden" [ngClass]="{'Showed':HiddenSortPanel==false}"><!-- sorting panel-->
+            <h6 class="col-auto">Sort </h6>
+            <div class="col-auto">
+                <select class="form-control">
+                    <option>lphabetically Asc</option>
+                    <option>Alphabetically Desc</option>
+                </select>
+            </div>
+            <h6 class="col-auto">by:</h6>
+            <div class="col-auto">
+                <select class="form-control">
+                    <option>Author's name</option>
+                    <option>Author's surname</option>
+                    <option>Title</option>
+                </select>
+            </div>
+        </div>
+        <div class="Panels row Hidden"  [ngClass]="{'Showed':HiddenSearchPanel==false}"><!-- search panel-->
+            <h6 class="col-auto">Search</h6>
+            <div class="col-auto">
+                <input type="text" placeholder="phrase" class="form-control"/>
+            </div>
+            <h6 class="col-auto">on:</h6>
+            <div class="col-auto">
+                <select class="form-control">
+                    <option>Author's name</option>
+                    <option>Author's surname</option>
+                    <option>Title</option>
+                    <option>Publisher</option>
+                </select>
+            </div>
+            <button class="btn btn-primary">
+                Search <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <app-book-list-element></app-book-list-element>
+</div>

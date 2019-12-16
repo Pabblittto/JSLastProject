@@ -1,3 +1,4 @@
+import { Book } from './../Models/Book';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,19 @@ export class BookCollectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  BookCollection:Book[]=[];
+
+  HiddenSortPanel:boolean=true;
+  HiddenSearchPanel:boolean=true;
+
+  SortBtnClick(){
+    this.HiddenSortPanel = !this.HiddenSortPanel;
+  }
+
+  SearchBtnClick(){
+    this.HiddenSearchPanel = !this.HiddenSearchPanel;
   }
 
 }

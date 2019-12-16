@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { BookCollectionComponent } from './book-collection/book-collection.component';
 import { AuthorListComponent } from './author-list/author-list.component';
+import { BookListElementComponent } from './book-list-element/book-list-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     BookCollectionComponent,
-    AuthorListComponent
+    AuthorListComponent,
+    BookListElementComponent
   ],
   imports: [
     BrowserModule,

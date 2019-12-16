@@ -16,5 +16,7 @@ export class MainPageComponent implements OnInit {
     window.location.href="bookcollection";
   }
 
+  
+
 
 }
