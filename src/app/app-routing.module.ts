@@ -1,3 +1,4 @@
+import { BookDetailsComponent } from './book-details/book-details.component';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { BookCollectionComponent } from './book-collection/book-collection.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path:'authorlist',
     component:AuthorListComponent
+  },
+  {
+    path:'details/:id',
+    component:BookDetailsComponent
   }
 ];
 

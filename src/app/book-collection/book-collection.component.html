@@ -2,15 +2,14 @@
     <div class="p-1">
         <div class="row pb-1 Panels">
             <h4 class="col-auto">Book Collection</h4>
-            <button class="btn btn-xs btn-primary col-auto mr-1" (click)="SortBtnClick()">Sort <i class="fas" [ngClass]="{'fa-angle-down':HiddenSortPanel,'fa-angle-up':!HiddenSortPanel}"></i></button>
-            <button class="btn btn-xs btn-primary col-auto" (click)="SearchBtnClick()">Search <i class="fas" [ngClass]="{'fa-angle-down':HiddenSearchPanel,'fa-angle-up':!HiddenSearchPanel}"></i></button><!--fa-angle-up-->
-
+            <button class="btn btn-xs btn-primary col-auto mr-1" (click)="SortShowBtnClick()">Sort <i class="fas" [ngClass]="{'fa-angle-down':HiddenSortPanel,'fa-angle-up':!HiddenSortPanel}"></i></button>
+            <button class="btn btn-xs btn-primary col-auto" (click)="SearchShowBtnClick()">Search <i class="fas" [ngClass]="{'fa-angle-down':HiddenSearchPanel,'fa-angle-up':!HiddenSearchPanel}"></i></button><!--fa-angle-up-->
         </div>
         <div class="row Panels Hidden" [ngClass]="{'Showed':HiddenSortPanel==false}"><!-- sorting panel-->
             <h6 class="col-auto">Sort </h6>
             <div class="col-auto">
                 <select class="form-control">
-                    <option>lphabetically Asc</option>
+                    <option>Alphabetically Asc</option>
                     <option>Alphabetically Desc</option>
                 </select>
             </div>
@@ -22,6 +21,7 @@
                     <option>Title</option>
                 </select>
             </div>
+            <button class="btn btn-primary" >Sort <i class="fas fa-sort"></i></button>
         </div>
         <div class="Panels row Hidden"  [ngClass]="{'Showed':HiddenSearchPanel==false}"><!-- search panel-->
             <h6 class="col-auto">Search</h6>
@@ -41,6 +41,20 @@
                 Search <i class="fas fa-search"></i>
             </button>
         </div>
+        <div class="Panels row">
+            <div class="text-center Section col-2">
+                <h6>Title</h6>
+            </div>
+            <div class="text-center Section col-2">
+                <h6>Genre</h6>
+            </div>
+            <div class="text-center Section col-2">
+                <h6>Release Date</h6>
+            </div>
+            <div class="text-center Section col-2">
+                <h6>Authors</h6>
+            </div>
+        </div>
     </div>
-    <app-book-list-element></app-book-list-element>
+    <app-book-list-element *ngFor="let book of DisplayBookCollection"  [ThisBook]="book"></app-book-list-element>
 </div>

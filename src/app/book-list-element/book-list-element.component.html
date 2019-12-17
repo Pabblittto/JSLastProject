@@ -1,1 +1,17 @@
-<h1>{{ThisBook.title}}</h1>
+<div class="row">
+    <div class="col-2 text-center">
+        <h6>{{ThisBook.title}}</h6>
+    </div>
+    <div class="col-2 text-center">
+        {{ThisBook.genre}}
+    </div>
+    <div class="col-2 text-center">
+        {{ThisBook.releaseYear}}
+    </div>
+    <div class="col-2 text-center">
+        <app-authors-small-rectangle [BookId]="ThisBook.id"></app-authors-small-rectangle>
+    </div>
+    <div class="col-2 text-center">
+        <button (click)="OpenDetails(ThisBook.id)" class="btn btn-dark">Details/Edit</button>
+    </div>
+</div>

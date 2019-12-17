@@ -1,4 +1,4 @@
-import { Book } from './../Models/Book';
+import { Book, Genres } from './../Models/Book';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,17 +13,26 @@ export class BookCollectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  BookCollection:Book[]=[];
+  OriginalBookCollection:Book[]=[{id:1,genre:Genres.adventure,releaseYear:1233,title:"na sztywno ostro",publisherId:12}
+                        ,{id:2,genre:Genres.adventure,releaseYear:1998,title:"na sztywno",publisherId:12}
+  ];
+
+  DisplayBookCollection:Book[]=[...this.OriginalBookCollection];
+  // lista która jest wyświetlana, jeżeli są nakładane filtry to 
+  //original jest skracanei tu wkładane
 
   HiddenSortPanel:boolean=true;
   HiddenSearchPanel:boolean=true;
 
-  SortBtnClick(){
+  SortShowBtnClick(){// przycisk pokazujący sortowanie
     this.HiddenSortPanel = !this.HiddenSortPanel;
   }
 
-  SearchBtnClick(){
+  SearchShowBtnClick(){// przycisk pokazujący szukanie
     this.HiddenSearchPanel = !this.HiddenSearchPanel;
   }
+
+
+
 
 }

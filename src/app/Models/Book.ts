@@ -2,7 +2,7 @@
 export class Book{
     id:number;
     title:string;
-    releaseDate:Date;
+    releaseYear:number;
     publisherId:number;
     genre:string;
 }

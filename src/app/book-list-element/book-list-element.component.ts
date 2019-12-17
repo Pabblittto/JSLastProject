@@ -15,4 +15,10 @@ export class BookListElementComponent implements OnInit {
 
   @Input() ThisBook:Book;
 
+  OpenDetails(Id:number){
+    window.location.href=`details/${Id}`;
+  }
+
+
+
 }
