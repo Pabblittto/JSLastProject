@@ -11,6 +11,8 @@ import { AuthorListComponent } from './author-list/author-list.component';
 import { BookListElementComponent } from './book-list-element/book-list-element.component';
 import { AuthorsSmallRectangleComponent } from './authors-small-rectangle/authors-small-rectangle.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     AuthorListComponent,
     BookListElementComponent,
     AuthorsSmallRectangleComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ConnectionService],
   bootstrap: [AppComponent]

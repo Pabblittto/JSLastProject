@@ -10,7 +10,11 @@ export class ConnectionService {// serwis do łączenia się z bazą poprzez Obs
 
   constructor(private http:HttpClient) { }
 
-  BookUrl:string="";
+
+  private BookUrl:string="http://localhost:3000/books/";
+  private AuthorUrl:string="http://localhost:3000/authors/";
+  private BookAuthorUrl:string="http://localhost:3000/bookAuthor/";
+  private PublisherUrl:string="http://localhost:3000/publisher/"
 
 
   GetCertainBook(Id:number):Observable<Book>{
@@ -30,7 +34,8 @@ export class ConnectionService {// serwis do łączenia się z bazą poprzez Obs
   }
   // Authorssssssssssssssssssssssssssssssssss
 
-  GetCertainAuthor(){
+  GetCertainAuthor(Id:number){
+    return this.http.get(this.AuthorUrl)
     
   }
   

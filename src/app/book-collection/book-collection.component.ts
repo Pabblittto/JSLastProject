@@ -1,3 +1,4 @@
+import { ConnectionService } from './../services/connection.service';
 import { Book, Genres } from './../Models/Book';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,16 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookCollectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private connection:ConnectionService) { }
 
   ngOnInit() {
-  }
+    this.connection.GetBookList().subscribe(
+      res=>{
+        this.OriginalBookCollection=[...res];
+        this.DisplayBookCollection=[...res];
+      }
+    );
+  } 
 
-  OriginalBookCollection:Book[]=[{id:1,genre:Genres.adventure,releaseYear:1233,title:"na sztywno ostro",publisherId:12}
-                        ,{id:2,genre:Genres.adventure,releaseYear:1998,title:"na sztywno",publisherId:12}
-  ];
+  OriginalBookCollection:Book[];
 
-  DisplayBookCollection:Book[]=[...this.OriginalBookCollection];
+  DisplayBookCollection:Book[]=[];
   // lista która jest wyświetlana, jeżeli są nakładane filtry to 
   //original jest skracanei tu wkładane
 

@@ -2,7 +2,7 @@
 export class Book{
     id:number;
     title:string;
-    releaseYear:number;
+    releaseDate:string;
     publisherId:number;
     genre:string;
 }
@@ -12,5 +12,6 @@ export enum Genres{
     comedy="comedy",
     drama="drama",
     epic="epic",
-    lyric="lyric"
+    lyric="lyric",
+    horror="horror"
 }
