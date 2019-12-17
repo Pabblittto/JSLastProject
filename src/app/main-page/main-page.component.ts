@@ -13,7 +13,7 @@ export class MainPageComponent implements OnInit {
   }
 
   EnterBtnClick(){
-    window.location.href="bookcollection";
+    window.location.href="books/list";
   }
 
   

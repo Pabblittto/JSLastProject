@@ -1,4 +1,4 @@
-import { Book } from './../Models/Book';
+import { Book } from '../../Models/Book';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -16,7 +16,7 @@ export class BookListElementComponent implements OnInit {
   @Input() ThisBook:Book;
 
   OpenDetails(Id:number){
-    window.location.href=`details/${Id}`;
+    window.location.href=`books/details/${Id}`;
   }
 
 

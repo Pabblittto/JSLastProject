@@ -1,10 +1,11 @@
-import { ConnectionService } from './../services/connection.service';
-import { Publisher } from './../Models/Publisher';
-import { Author } from './../Models/Author';
-import { Book } from './../Models/Book';
+import { ConnectionService } from '../../services/connection.service';
+import { Publisher } from '../../Models/Publisher';
+import { Author } from '../../Models/Author';
+import { Book } from '../../Models/Book';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-book-details',
@@ -40,7 +41,16 @@ export class BookDetailsComponent implements OnInit {
 
   DownloadBook(){
     this.WrongId=false;
-    alert("zaimplementować pobieranie obiektu ze ");
+    this.connection.GetCertainBook(this.BookId).subscribe(
+      res=>{
+        this.CertainBook=res;
+      },
+      (err:HttpErrorResponse)=>{
+        alert("nie znaleziono obiektu");
+        this.WrongIdNumber();
+      }
+      
+    )
   }
 
   BackBtnClick(){

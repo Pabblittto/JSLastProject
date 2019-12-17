@@ -1,6 +1,6 @@
-import { BookDetailsComponent } from './book-details/book-details.component';
-import { AuthorListComponent } from './author-list/author-list.component';
-import { BookCollectionComponent } from './book-collection/book-collection.component';
+import { BookDetailsComponent } from './books/book-details/book-details.component';
+import { AuthorListComponent } from './authors/author-list/author-list.component';
+import { BookCollectionComponent } from './books/book-collection/book-collection.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,21 +8,21 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:"",
+    path:'',
     component:MainPageComponent
   },
   {
-    path:'bookcollection',
-    component:BookCollectionComponent
+    path:'books',
+    loadChildren:'./books/books.module#BooksModule'
   },
   {
-    path:'authorlist',
-    component:AuthorListComponent
+    path:'authors',
+    loadChildren:'./authors/authors.module#AuthorsModule'
   },
   {
-    path:'details/:id',
-    component:BookDetailsComponent
-  }
+    path:'publishers',
+    loadChildren:'./publishers/publishers.module#PublishersModule'
+  },
 ];
 
 @NgModule({

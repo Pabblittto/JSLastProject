@@ -1,6 +1,8 @@
-import { ConnectionService } from './../services/connection.service';
-import { Book, Genres } from './../Models/Book';
+import { ActivatedRoute } from '@angular/router';
+import { ConnectionService } from '../../services/connection.service';
+import { Book, Genres } from '../../Models/Book';
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-book-collection',
@@ -9,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookCollectionComponent implements OnInit {
 
-  constructor(private connection:ConnectionService) { }
+  constructor(private connection:ConnectionService, private router:Router) { }
 
   ngOnInit() {
     this.connection.GetBookList().subscribe(
@@ -37,6 +39,9 @@ export class BookCollectionComponent implements OnInit {
     this.HiddenSearchPanel = !this.HiddenSearchPanel;
   }
 
+  AddBtnClick(){
+    this.router.navigate(['books/addbook']);
+  }
 
 
 

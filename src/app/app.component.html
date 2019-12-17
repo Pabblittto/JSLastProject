@@ -1,15 +1,15 @@
 <div class="shadow shadow-sm MyNavBar" ><!-- Nav bar-->
-    <a href="#" class="NavElementLink">
+    <a routerLink="" class="NavElementLink">
         <div class="NavElement">
             Home
         </div>
     </a>
-    <a routerLink="bookcollection" class="NavElementLink">
+    <a routerLink="books" class="NavElementLink">
         <div class="NavElement">
             Book Collection
         </div>
     </a>
-    <a routerLink="authorlist" class="NavElementLink">
+    <a routerLink="authors" class="NavElementLink">
         <div class="NavElement">
             Author List
         </div>
@@ -17,7 +17,7 @@
 </div>
 <div><!-- main content-->
     <router-outlet></router-outlet>
-    <footer >
+    <footer>
         Jakub Nicewicz & Paweł Łaskarzewski 2019
     </footer>
 </div>
