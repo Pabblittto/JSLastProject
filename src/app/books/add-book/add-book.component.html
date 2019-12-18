@@ -1,28 +1,40 @@
 <div class="container min-vh-100">
     <div class="row">
         <h4 class="col-auto">Add Book</h4>
-        <button class="btn btn-primary ml-1" (click)="BackBtnClick()">Back</button>
+        <button class="btn btn-primary ml-1" (click)="BackBtnClick()"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
     </div>
     <div class="row">
         <div class="col-6 offset-3">
             <div class="form-group">
                 <label>Title:</label>
-                <input type="text" class="form-control" [(ngModel)]="NewBook.title" name="title" />                
+                <input type="text" class="form-control" [(ngModel)]="NewBook.title" name="Booktitle" />                
             </div>            
             <div class="form-group">
                 <label>Release Date:</label>
-                <input type="date" class="form-control" [(ngModel)]="NewBook.releaseDate" name="title" />                
+                <input type="date" class="form-control" [(ngModel)]="NewBook.releaseDate" name="releaseDate"/>                
             </div>
             <div class="form-group row">
-                <div class="col">
-
+                <div class="col-auto">
+                    <select class="form-control" [(ngModel)]="SelectedAuthor" >
+                        <option value="" selected>Select author</option>
+                        <option *ngFor="let author of AuthorsList" value="{{author.id}}">{{author.name}} {{author.surname}}</option>
+                    </select>
                 </div>
-                <div class="col">
-
+                <div class="col-auto">
+                    <button class="btn btn-primary" (click)="AddAuthorClick()">Add <i class="fas fa-long-arrow-alt-right"></i></button>
+                </div>
+                <div class="col-auto">
+                    <h6>Assigned authors:</h6>
+                    <div class="row" *ngIf="ChoosedAuthors.length!=0; else NoAuthors">
+                        <h6 *ngFor="let author of ChoosedAuthors" class="col-auto">{{author.name}} {{author.surname}}</h6>
+                        <button class="btn btn-primary">X</button>
+                    </div>
+                    <ng-template #NoAuthors><h6>No authors added</h6></ng-template>
+                    
                 </div>
             </div>
             <div class="text-center">
-                <button class="btn btn-primary" (click)="AddBookBtnClick()">Add Book</button>
+                <button class="btn btn-primary" (click)="AddBookBtnClick()">Add Book <i class="far fa-plus-square"></i> </button>
             </div>
 
 

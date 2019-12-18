@@ -4,7 +4,7 @@
             <h4 class="col-auto">Book Collection</h4>
             <button class="btn btn-xs btn-primary col-auto mr-1" (click)="SortShowBtnClick()">Sort <i class="fas" [ngClass]="{'fa-angle-down':HiddenSortPanel,'fa-angle-up':!HiddenSortPanel}"></i></button>
             <button class="btn btn-xs btn-primary col-auto mr-1" (click)="SearchShowBtnClick()">Search <i class="fas" [ngClass]="{'fa-angle-down':HiddenSearchPanel,'fa-angle-up':!HiddenSearchPanel}"></i></button><!--fa-angle-up-->
-            <button class="btn btn-primary" (click)="AddBtnClick()">Add Book</button>
+            <button class="btn btn-primary" (click)="AddBtnClick()">Add Book <i class="far fa-plus-square"></i></button>
         </div>
         <div class="row Panels Hidden" [ngClass]="{'Showed':HiddenSortPanel==false}"><!-- sorting panel-->
             <h6 class="col-auto">Sort </h6>
