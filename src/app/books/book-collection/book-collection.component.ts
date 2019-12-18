@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ConnectionService } from '../../services/connection.service';
 import { Book, Genres } from '../../Models/Book';
@@ -18,6 +19,9 @@ export class BookCollectionComponent implements OnInit {
       res=>{
         this.OriginalBookCollection=[...res];
         this.DisplayBookCollection=[...res];
+      },
+      (err:HttpErrorResponse)=>{
+        alert("Can not connect to the server");
       }
     );
   } 

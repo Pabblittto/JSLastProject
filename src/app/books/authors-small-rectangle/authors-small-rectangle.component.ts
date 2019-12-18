@@ -1,3 +1,5 @@
+import { ConnectionService } from './../../services/connection.service';
+import { Author } from './../../Models/Author';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,12 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AuthorsSmallRectangleComponent implements OnInit {
 
-  constructor() { }
+  constructor( private connection:ConnectionService) { }
 
   ngOnInit() {
-    
   }
 
 @Input() BookId:number;
+Authors:Author[]=[]
 
 }
