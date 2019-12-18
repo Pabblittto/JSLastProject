@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-book-details',
@@ -14,13 +15,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class BookDetailsComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private location:Location,private connection:ConnectionService) { }
+  constructor(
+    private route:ActivatedRoute, 
+    private location:Location,
+    private connection:ConnectionService,
+    private notifications:NotificationService
+    ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params=>{
       this.BookId=parseInt(params.get('id'));
       if(Number.isNaN(this.BookId)){
-        this.WrongIdNumber();
+        this.notifications.AddMessage("Entered Id in URL is not a number!!");
       }
       else{
         this.DownloadBook();
@@ -36,6 +42,7 @@ export class BookDetailsComponent implements OnInit {
 
   WrongIdNumber(){
     this.WrongId=true;
+    this.CertainBook={id:undefined,genre:"Unknown",releaseDate:"Unknown",title:"Unknown",publisherId:undefined};
   }
 
 
@@ -46,7 +53,7 @@ export class BookDetailsComponent implements OnInit {
         this.CertainBook=res;
       },
       (err:HttpErrorResponse)=>{
-        alert("nie znaleziono obiektu");
+        this.notifications.AddMessage("There is no book with certain Id!");
         this.WrongIdNumber();
       }
       

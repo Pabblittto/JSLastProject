@@ -1,4 +1,4 @@
-<div class="container min-vh-75">
+<div class="container min-vh-100">
     <div class="row">
         <h4 class="col-auto">Add Author</h4>
         <button class="btn btn-primary ml-1" (click)="BackBtnClick()">Back</button>
@@ -7,14 +7,14 @@
         <div class="col-6 offset-3">
             <div class="form-group">
                 <label>Author's name:</label>
-                <input type="text" class="form-control" />                
+                <input type="text" class="form-control" [(ngModel)]="NewAuthor.name" name="name" />                
             </div>
             <div class="form-group">
                 <label>Author's surname:</label>
-                <input type="text" class="form-control" [(ngModel)]="NewAuthor.surname"/>                
+                <input type="text" class="form-control" [(ngModel)]="NewAuthor.surname" name="surname"/>                
             </div>
             <div class="text-center">
-                <button class="btn btn-primary">Add Author</button>
+                <button class="btn btn-primary" (click)="AddAuthorBtnClick()">Add Author</button>
             </div>
 
 

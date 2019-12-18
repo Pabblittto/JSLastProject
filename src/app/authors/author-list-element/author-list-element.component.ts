@@ -14,7 +14,7 @@ export class AuthorListElementComponent implements OnInit {
   constructor( private connection:ConnectionService,private router:Router) { }
 
   ngOnInit() {
-    this.connection.GetObjectsForCertainAuthor(this.AuthorId).subscribe(
+    this.connection.GetObjectsForCertainAuthor(this.ThisAuthor.id).subscribe(
       res=>{
         this.BookNumber=res.length;
       },
@@ -22,22 +22,14 @@ export class AuthorListElementComponent implements OnInit {
 
       }
     )
-    this.connection.GetCertainAuthor(this.AuthorId).subscribe(
-      res=>{
-        this.ThisAuthor=res;
-    },
-    (err:HttpErrorResponse)=>{
-
-    });
   }
 
-  @Input() AuthorId:number;
-  ThisAuthor:Author;  
+  @Input() ThisAuthor:Author;  
 
   BookNumber:number=0;
 
   DetailsBtnClick(){
-    this.router.navigate([`authors/details/${this.AuthorId}`])
+    this.router.navigate([`authors/details/${this.ThisAuthor.id}`])
   }
 
 }

@@ -1,14 +1,15 @@
-<div class="row">
+<div class="row border-bottom">
     <div class="col-2 text-center">
         <h6>{{ThisBook.title}}</h6>
     </div>
     <div class="col-2 text-center">
-        {{ThisBook.genre}}
+        <h6>{{ThisBook.genre}}</h6>
+
     </div>
     <div class="col-2 text-center">
-        {{ThisBook.releaseDate}}
+        <h6> {{ThisBook.releaseDate}}</h6>
     </div>
-    <div class="col-2 text-center">
+    <div class="col-3 text-center">
         <app-authors-small-rectangle [BookId]="ThisBook.id"></app-authors-small-rectangle>
     </div>
     <div class="col-2 text-center">

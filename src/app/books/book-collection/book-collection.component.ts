@@ -1,3 +1,4 @@
+import { NotificationService } from './../../services/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ConnectionService } from '../../services/connection.service';
@@ -12,7 +13,11 @@ import {Router} from '@angular/router'
 })
 export class BookCollectionComponent implements OnInit {
 
-  constructor(private connection:ConnectionService, private router:Router) { }
+  constructor(
+    private connection:ConnectionService, 
+    private router:Router,
+    private notification:NotificationService
+    ) { }
 
   ngOnInit() {
     this.connection.GetBookList().subscribe(
@@ -21,7 +26,9 @@ export class BookCollectionComponent implements OnInit {
         this.DisplayBookCollection=[...res];
       },
       (err:HttpErrorResponse)=>{
-        alert("Can not connect to the server");
+        this.notification.AddMessage("Can not download list from server, check log for more information");
+        console.log(err);
+        
       }
     );
   } 

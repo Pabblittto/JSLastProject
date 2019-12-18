@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BooksRoutes } from './books.routes';
 import { RouterModule } from '@angular/router';
 import { BookListElementComponent } from './book-list-element/book-list-element.component';
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     BookListElementComponent],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(BooksRoutes)
   ]
 })

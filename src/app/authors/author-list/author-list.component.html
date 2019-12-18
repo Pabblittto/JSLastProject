@@ -10,7 +10,7 @@
 
         </select>
     </div>
-    <div class="row">
+    <div class="row mt-1 border-bottom border-secondary">
         <div class="text-center col-3 Properties">
             <h6>Name</h6>
         </div>
@@ -21,10 +21,9 @@
             <h6>Number of books</h6>
         </div>
         <div class="text-center col-3 Properties">
-
         </div>
-
     </div>
+    <app-author-list-element *ngFor="let author of DisplayAuthorsCollection" [ThisAuthor]="author"></app-author-list-element>
 
 
 </div>

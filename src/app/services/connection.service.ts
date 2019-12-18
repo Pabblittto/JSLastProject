@@ -4,6 +4,7 @@ import { Book } from './../Models/Book';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Publisher } from '../Models/Publisher';
 
 @Injectable({
   providedIn: 'root'
@@ -67,11 +68,33 @@ export class ConnectionService {// serwis do łączenia się z bazą poprzez Obs
 
 
   GetObjectForCertainBook(BookId:number):Observable<BookAuthor[]>{
-    return this.http.get<BookAuthor[]>(`${this.BookAuthorUrl}+?bookid=${BookId}`);
+    return this.http.get<BookAuthor[]>(`${this.BookAuthorUrl}?bookid=${BookId}`);
   }
 
   GetObjectsForCertainAuthor(AuthotId:number):Observable<BookAuthor[]>{
-    return this.http.get<BookAuthor[]>(`${this.BookAuthorUrl}+?authorId=${AuthotId}`);
+    return this.http.get<BookAuthor[]>(`${this.BookAuthorUrl}?authorId=${AuthotId}`);
+  }
+
+  // Publisherssssssssssssssssssssssssssss
+
+  GetCertainPublisher(Id:number):Observable<Publisher>{
+    return this.http.get<Publisher>(this.PublisherUrl+Id);
+  }
+
+  GetPublishersList():Observable<Publisher[]>{
+    return this.http.get<Publisher[]>(this.PublisherUrl);
+  }
+
+  UpdateCertainPublisher(Id:number,UpPublisher:Publisher){
+    return this.http.patch(this.PublisherUrl+Id,UpPublisher);
+  }
+
+  DeleteCertainPublisher(Id:number){
+    return this.http.delete(this.PublisherUrl+Id);
+  }
+
+  AddPublisher(NewPublisher:Publisher):Observable<Publisher>{
+    return this.http.post<Publisher>(this.PublisherUrl,NewPublisher);
   }
 
 }

@@ -1,3 +1,4 @@
+import { BookAuthor } from './../../Models/BookAuthor';
 import { ConnectionService } from './../../services/connection.service';
 import { Author } from './../../Models/Author';
 import { Component, OnInit, Input } from '@angular/core';
@@ -12,9 +13,33 @@ export class AuthorsSmallRectangleComponent implements OnInit {
   constructor( private connection:ConnectionService) { }
 
   ngOnInit() {
+    this.connection.GetObjectForCertainBook(this.BookId).subscribe(
+      res=>{
+        if(res.length==0){
+          this.Authors=[{id:0,name:"No",surname:"Authors"}];
+        }
+        else{
+          this.BookAuthorsObjects=[...res];
+          this.Authors=[];
+          for(let i=0;i<this.BookAuthorsObjects.length;i++){
+            this.connection.GetCertainAuthor(this.BookAuthorsObjects[i].authorId).subscribe(
+              res=>{
+                this.Authors.push(res);
+              })
+
+            
+          }
+        }
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 
+
+  BookAuthorsObjects:BookAuthor[];
 @Input() BookId:number;
-Authors:Author[]=[]
+  Authors:Author[]=[]
 
 }
