@@ -13,6 +13,8 @@ export class AuthorsSmallRectangleComponent implements OnInit {
   constructor( private connection:ConnectionService) { }
 
   ngOnInit() {
+    console.log(this.BookId);
+    
     this.connection.GetObjectForCertainBook(this.BookId).subscribe(
       res=>{
         if(res.length==0){
