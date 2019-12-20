@@ -68,7 +68,7 @@ export class ConnectionService {// serwis do łączenia się z bazą poprzez Obs
 
 
   GetObjectForCertainBook(BookId:number):Observable<BookAuthor[]>{
-    return this.http.get<BookAuthor[]>(`${this.BookAuthorUrl}?bookid=${BookId}`);
+    return this.http.get<BookAuthor[]>(`${this.BookAuthorUrl}?bookId=${BookId}`);
   }
 
   GetObjectsForCertainAuthor(AuthotId:number):Observable<BookAuthor[]>{

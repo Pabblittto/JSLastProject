@@ -29,7 +29,6 @@ export class AuthorsSmallRectangleComponent implements OnInit {
                 this.Authors.push(res);
               })
 
-            
           }
         }
       },

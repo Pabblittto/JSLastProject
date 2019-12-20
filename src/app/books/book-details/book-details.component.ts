@@ -26,6 +26,7 @@ export class BookDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params=>{
       this.BookId=parseInt(params.get('id'));
       if(Number.isNaN(this.BookId)){
+        this.WrongId=true;
         this.notifications.AddMessage("Entered Id in URL is not a number!!");
       }
       else{
@@ -36,9 +37,9 @@ export class BookDetailsComponent implements OnInit {
 
   WrongId:boolean=false;
   BookId:number;
-  CertainBook:Book;
+  CertainBook:Book={ genre:"",id:undefined,publisherId:undefined,title:"",releaseDate:""};
   AuthorList:Author[];
-  BookPublisher:Publisher;
+  BookPublisher:Publisher={id:undefined,localization:"",name:"",telNumber:1};
 
   WrongIdNumber(){
     this.WrongId=true;
@@ -51,6 +52,11 @@ export class BookDetailsComponent implements OnInit {
     this.connection.GetCertainBook(this.BookId).subscribe(
       res=>{
         this.CertainBook=res;
+        this.connection.GetCertainPublisher(res.publisherId).subscribe(
+          res=>{
+            this.BookPublisher=res;
+          }
+        );
       },
       (err:HttpErrorResponse)=>{
         this.notifications.AddMessage("There is no book with certain Id!");
@@ -62,6 +68,10 @@ export class BookDetailsComponent implements OnInit {
 
   BackBtnClick(){
     this.location.back();
+  }
+
+  EditBtnClick(){
+    
   }
 
 

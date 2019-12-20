@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { BookAuthor } from './../../Models/BookAuthor';
 import { NotificationService } from './../../services/notification.service';
 import { Author } from './../../Models/Author';
@@ -17,7 +18,8 @@ export class AddBookComponent implements OnInit {
   constructor(
     private location:Location,
     private connection:ConnectionService,
-    private notification:NotificationService
+    private notification:NotificationService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -90,29 +92,33 @@ export class AddBookComponent implements OnInit {
     }
 
     if(good){// jeżeli dane są dobre
-      this.NewBook.publisherId=Number.parseInt(this.SelectedPublisher);
+     this.AddBookMain();
+    }
+
+  }
+
+  private AddBookMain(){
+     this.NewBook.publisherId=Number.parseInt(this.SelectedPublisher);
       this.connection.AddBook(this.NewBook).subscribe(res=>{
         this.NewBook=res;
         this.notification.AddMessage("Book added succesfully");
         
+        let promiseObject:Promise<BookAuthor>=null;
         for(let i=0;i<this.AuthorsList.length;i++){
           let BookAuthorNew:BookAuthor={authorId:this.AuthorsList[i].id,bookId:this.NewBook.id,id:undefined};
-          this.connection.AddBookAuthorObject(BookAuthorNew).subscribe(            
-            res=>{
 
-            },
-            err=>{
-              console.log(err);
-              
-            })
+          if(promiseObject==null)
+          promiseObject = this.connection.AddBookAuthorObject(BookAuthorNew).toPromise();
+          else{
+            promiseObject.finally(()=>{
+              promiseObject=this.connection.AddBookAuthorObject(BookAuthorNew).toPromise();
+            });
+
+          }    
         }
-        this.location.back();
+
+        this.router.navigate([''])
       });
-
-      
-
-    }
-
   }
 
   AddAuthorClick(){

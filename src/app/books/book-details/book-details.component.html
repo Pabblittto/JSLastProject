@@ -1,7 +1,7 @@
 <div class="container pt-2">
     <div>
         <button class="btn btn-dark mr-1" (click)="BackBtnClick()"> <i class="fas fa-long-arrow-alt-left"></i> Back</button>
-        <button class="btn btn-dark" [attr.disabled]="WrongId">Edit this book</button>
+        <button class="btn btn-dark" [disabled]="WrongId" (click)="EditBtnClick()">Edit this book</button>
     </div>
     <div class="mt-2 border shadow shadow-sm">
         <h4>Book details</h4>
@@ -19,7 +19,11 @@
         </div>
         <div>
             <h5>Authors:</h5>
-            <h6 *ngFor="let author of AuthorList">{{author}}</h6>
+            <!-- <div *ngFor="let author of AuthorList">
+                <h6>{{author}}</h6>
+            </div> -->
+            <app-authors-small-rectangle [BookId]="BookId" ></app-authors-small-rectangle>
+
         </div>
 
     </div>
