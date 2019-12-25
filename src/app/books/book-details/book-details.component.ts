@@ -39,7 +39,7 @@ export class BookDetailsComponent implements OnInit {
   BookId:number;
   CertainBook:Book={ genre:"",id:undefined,publisherId:undefined,title:"",releaseDate:""};
   AuthorList:Author[];
-  BookPublisher:Publisher={id:undefined,localization:"",name:"",telNumber:1};
+  BookPublisher:Publisher={id:undefined,city:"",name:"",phoneNumber:1};
 
   WrongIdNumber(){
     this.WrongId=true;
@@ -55,6 +55,9 @@ export class BookDetailsComponent implements OnInit {
         this.connection.GetCertainPublisher(res.publisherId).subscribe(
           res=>{
             this.BookPublisher=res;
+          },
+          err=>{
+            this.BookPublisher={name:"Not Found :c",city:"",phoneNumber:undefined,id:1};
           }
         );
       },

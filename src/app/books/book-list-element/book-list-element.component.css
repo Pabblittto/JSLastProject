@@ -1,0 +1,36 @@
+.QuestionDiv{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.747);
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+}
+
+.MainMesage{
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    background-color: lightgray;
+    opacity: 1;
+    margin-left: -200px;
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+.MainMessageHidde{
+    display: none;
+}
+
+.WaitingText{
+    color:red;
+    display: none;
+}
+
+
+.WaitingTextDisplay{
+    display:inline;
+}

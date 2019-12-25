@@ -27,6 +27,9 @@ export class AuthorsSmallRectangleComponent implements OnInit {
             this.connection.GetCertainAuthor(this.BookAuthorsObjects[i].authorId).subscribe(
               res=>{
                 this.Authors.push(res);
+              },
+              err=>{
+                this.Authors.push({id:this.BookAuthorsObjects[i].authorId,name:"Unknown",surname:"Author"})
               })
 
           }

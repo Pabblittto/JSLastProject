@@ -1,0 +1,29 @@
+<div class="container min-vh-100">
+    <div class="row m-1">
+        <h4 class="col-auto">Add Publisher</h4>
+        <button class="btn btn-primary ml-1" (click)="BackBtnClick()"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+    </div>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" class="form-control" [(ngModel)]="NewPublisher.name" name="PublisherName"/>                
+            </div> 
+        </div>
+        <div class="col-8 offset-2">
+            <div class="form-group">
+                <label>City:</label>
+                <input type="text" class="form-control" [(ngModel)]="NewPublisher.city" name="Publishercity"/>                
+            </div> 
+        </div>
+        <div class="col-8 offset-2">
+            <div class="form-group">
+                <label>Phone Number:</label>
+                <input type="number" class="form-control" [(ngModel)]="NewPublisher.phoneNumber" name="PublisherPhoneNumber"/>                
+            </div> 
+        </div>
+        <div class="col-8 offset-2 text-center">
+            <button class="btn btn-primary" (click)="AddPublisher()">Add Publisher <i class="far fa-plus-square"></i></button>
+        </div>
+    </div>
+</div>

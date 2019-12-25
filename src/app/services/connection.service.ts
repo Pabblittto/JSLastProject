@@ -109,4 +109,9 @@ export class ConnectionService {// serwis do łączenia się z bazą poprzez Obs
     return this.http.post<Publisher>(this.PublisherUrl,NewPublisher);
   }
 
+  GetPublishersBooks(Id:number):Observable<Book[]>{
+    let url=this.BookUrl.substring(0,this.BookUrl.length-1);
+    return this.http.get<Book[]>(`${url}?publisherId=${Id}`);
+  }
+
 }

@@ -104,8 +104,8 @@ export class AddBookComponent implements OnInit {
         this.notification.AddMessage("Book added succesfully");
         
         let promiseObject:Promise<BookAuthor>=null;
-        for(let i=0;i<this.AuthorsList.length;i++){
-          let BookAuthorNew:BookAuthor={authorId:this.AuthorsList[i].id,bookId:this.NewBook.id,id:undefined};
+        for(let i=0;i<this.ChoosedAuthors.length;i++){
+          let BookAuthorNew:BookAuthor={authorId:this.ChoosedAuthors[i].id,bookId:this.NewBook.id,id:undefined};
 
           if(promiseObject==null)
           promiseObject = this.connection.AddBookAuthorObject(BookAuthorNew).toPromise();
@@ -113,23 +113,19 @@ export class AddBookComponent implements OnInit {
             promiseObject.finally(()=>{
               promiseObject=this.connection.AddBookAuthorObject(BookAuthorNew).toPromise();
             });
-
           }    
         }
-
-        this.router.navigate([''])
+        this.router.navigate(['books/list'])
       });
   }
 
   AddAuthorClick(){
-    
     if(this.SelectedAuthor!=""){
       let tmpAuthor:Author;
       this.AuthorsList.forEach((ob)=>{
         if(ob.id==Number.parseInt(this.SelectedAuthor)){
           tmpAuthor=ob;
         }
-          
       })
       let found=false;
       for(let i=0;i<this.ChoosedAuthors.length;i++){
@@ -138,11 +134,9 @@ export class AddBookComponent implements OnInit {
           break;
         }
       }
-
       if(!found)
         this.ChoosedAuthors.push(tmpAuthor);
     }
-    
   }
 
   RemoveAuthorClick(Id:number){    

@@ -1,0 +1,23 @@
+<div class="container">
+    <div>
+        <button class="btn btn-dark mr-1" (click)="BackBtnClick()"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+        <button class="btn btn-dark" [disabled]="WrongId" (click)="EditBtnClick()">Edit this publisher</button>
+    </div>
+    <div class="mt-2 border shadow shadow-sm">
+        <h4>Publisher details</h4>
+        <div>
+            <h5>Name: {{CertainPublisher.name}}</h5>
+        </div>
+        <div>
+            <h5>City: {{CertainPublisher.city}}</h5>
+        </div>
+        <div>
+            <h5>Phone Number: {{CertainPublisher.phoneNumber}}</h5>
+        </div>
+        <div class="">
+            <h5>Books:</h5>
+            <h6 *ngFor="let book of BooksList" class="text-center">{{book.title}}</h6>
+        </div>
+
+    </div>
+</div>

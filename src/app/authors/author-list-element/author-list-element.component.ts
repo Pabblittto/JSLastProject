@@ -1,3 +1,4 @@
+import { NotificationService } from 'src/app/services/notification.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ConnectionService } from './../../services/connection.service';
@@ -11,7 +12,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AuthorListElementComponent implements OnInit {
 
-  constructor( private connection:ConnectionService,private router:Router) { }
+  constructor( 
+    private connection:ConnectionService,
+    private router:Router,
+    private notifications:NotificationService
+    
+    ) { }
 
   ngOnInit() {
     this.connection.GetObjectsForCertainAuthor(this.ThisAuthor.id).subscribe(
@@ -27,9 +33,36 @@ export class AuthorListElementComponent implements OnInit {
   @Input() ThisAuthor:Author;  
 
   BookNumber:number=0;
+  
+
+  ShowQuestion:boolean=false;
+  ShowLoadingText:boolean=false;
+
 
   DetailsBtnClick(){
     this.router.navigate([`authors/details/${this.ThisAuthor.id}`])
+  }
+
+  DeleteBtnClick(){
+    this.ShowQuestion=true;
+  }
+
+  FinalDeleteBtnClick(){
+    this.connection.DeleteCertainAuthor(this.ThisAuthor.id).subscribe(
+      res=>{
+        window.location.reload();
+        this.notifications.AddMessage("Author deleted succesfully");
+      },
+      err=>{
+        this.notifications.AddMessage("Can not delete Author, check log for more details");
+        this.ShowLoadingText=false;
+        this.ShowQuestion=false;
+      }
+    )
+  }
+
+  CancelBtnClick(){
+    this.ShowQuestion=false;
   }
 
 }

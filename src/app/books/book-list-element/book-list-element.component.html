@@ -12,7 +12,23 @@
     <div class="col-3 text-center">
         <app-authors-small-rectangle [BookId]="ThisBook.id"></app-authors-small-rectangle>
     </div>
-    <div class="col-2 text-center">
-        <button (click)="OpenDetails(ThisBook.id)" class="btn btn-dark">Details/Edit</button>
+    <div class="col-3 text-center">
+        <button  class="btn btn-dark" (click)="OpenDetails(ThisBook.id)">Details/Edit</button>
+        <button class="btn btn-danger ml-1" (click)="DeleteBtnClick()" >Delete</button>
     </div>
+</div>
+
+<div class="text-center" [ngClass]="{'QuestionDiv':ShowQuestion}">
+    <div class="MainMesage" [ngClass]="{'MainMessageHidde':!ShowQuestion}">
+       <h6 class="mt-2">Do you want to delete book: "{{ThisBook.title}}"?</h6> 
+       <div class="row text-center">
+           <div class="col">
+                <button class="btn btn-danger" (click)="FinalDeleteBtnClick()">Delete</button>
+           </div>
+            <div class="col">
+                <button class="btn btn-secondary" (click)="CancelBtnClick()">Cancel</button>   
+            </div>
+       </div>
+        <h6 class="WaitingText" [ngClass]="{'WaitingTextDisplay':ShowLoadingText}" >Deleting...</h6>
+     </div>
 </div>

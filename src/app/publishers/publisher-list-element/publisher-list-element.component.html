@@ -1,23 +1,22 @@
-<div class="row border-bottom m-1">
-    <div class="col-3 text-center">
-        <h6>{{ThisAuthor.name}}</h6>
+<div class="row text-center">
+    <div class="col-3">
+        <h6>{{ThisPublisher.name}}</h6>
     </div>
-    <div class="col-3 text-center">
-        <h6>{{ThisAuthor.surname}}</h6>
+    <div class="col-3">
+        <h6>{{ThisPublisher.city}}</h6>
     </div>
-    <div class="col-3 text-center">
-        <h6>{{BookNumber}}</h6>
+    <div class="col-3">
+        <h6>{{ThisPublisher.phoneNumber}}</h6>
     </div>
-    <div class="col-3 text-center">
-        <button class="btn btn-dark" (click)="DetailsBtnClick()">Details/Edit</button>
-        <button class="btn btn-danger ml-1" (click)="DeleteBtnClick()">Delete</button>
+    <div class="col">
+        <button class="btn btn-dark" (click)="EditBtnClick()">Edit/Details</button>
+        <button class="btn btn-danger ml-1" (click)="DeleteBtnClick()"> Delete</button>
     </div>
-
 </div>
 
 <div class="text-center" [ngClass]="{'QuestionDiv':ShowQuestion}">
     <div class="MainMesage" [ngClass]="{'MainMessageHidde':!ShowQuestion}">
-       <h6 class="mt-2">Do you want to delete author: "{{ThisAuthor.name}} {{ThisAuthor.surname}}" ?</h6> 
+       <h6 class="mt-2">Do you want to delete "{{ThisPublisher.name}}" publisher?</h6> 
        <div class="row text-center">
            <div class="col">
                 <button class="btn btn-danger" (click)="FinalDeleteBtnClick()">Delete</button>
