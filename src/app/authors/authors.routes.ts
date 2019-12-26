@@ -1,3 +1,4 @@
+import { AuthorEditComponent } from './author-edit/author-edit.component';
 import { AuthorDetailsComponent } from './author-details/author-details.component';
 import { AddAuthorComponent } from './add-author/add-author.component';
 import { AuthorListComponent } from './author-list/author-list.component';
@@ -19,5 +20,9 @@ export const AuthorsRoutes: Routes=[
     {
         path:'details/:id',
         component:AuthorDetailsComponent
+    },
+    {
+        path:'edit/:id',
+        component:AuthorEditComponent
     }
 ]

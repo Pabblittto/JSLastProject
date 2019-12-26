@@ -8,6 +8,7 @@ import { AuthorsSmallRectangleComponent } from './authors-small-rectangle/author
 import { AddBookComponent } from './add-book/add-book.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BookEditComponent } from './book-edit/book-edit.component';
 
 
 
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
     AuthorsSmallRectangleComponent,
     BookCollectionComponent,
     BookDetailsComponent,
-    BookListElementComponent],
+    BookListElementComponent,
+    BookEditComponent],
   imports: [
     CommonModule,
     FormsModule,

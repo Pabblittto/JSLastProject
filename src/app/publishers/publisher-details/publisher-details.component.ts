@@ -18,7 +18,8 @@ export class PublisherDetailsComponent implements OnInit {
     private connection:ConnectionService,
     private activatedRoute:ActivatedRoute,
     private notification:NotificationService,
-    private location:Location
+    private location:Location,
+    private router:Router
     ) { }
 
   ngOnInit() {
@@ -49,11 +50,14 @@ export class PublisherDetailsComponent implements OnInit {
       err=>{
         console.log(err);
         this.notification.AddMessage("Can not download publisher from server, check log for more information");
+        this.CertainPublisher={city:"NOT FOUND",id:undefined,name:"NOT FOUND",phoneNumber:0};
+        this.WrongId=true;
     });
 
     this.connection.GetPublishersBooks(this.publisherId).subscribe(
       res=>{
         this.BooksList=[...res];
+
       },
       err=>{
         this.notification.AddMessage("Can not download books from server, check log for more information");
@@ -70,6 +74,6 @@ export class PublisherDetailsComponent implements OnInit {
   }
 
   EditBtnClick(){
-    
+    this.router.navigate([`publishers/edit/${this.publisherId}`]);
   }
 }

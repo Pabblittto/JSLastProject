@@ -7,11 +7,12 @@ import { PublisherCollectionComponent } from './publisher-collection/publisher-c
 import { PublisherListElementComponent } from './publisher-list-element/publisher-list-element.component';
 import { PublisherDetailsComponent } from './publisher-details/publisher-details.component';
 import { AddPublisherComponent } from './add-publisher/add-publisher.component';
+import { PublisherEditComponent } from './publisher-edit/publisher-edit.component';
 
 
 
 @NgModule({
-  declarations: [PublisherCollectionComponent, PublisherListElementComponent, PublisherDetailsComponent, AddPublisherComponent],
+  declarations: [PublisherCollectionComponent, PublisherListElementComponent, PublisherDetailsComponent, AddPublisherComponent, PublisherEditComponent],
   imports: [
     CommonModule,
     FormsModule,

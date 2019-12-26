@@ -1,9 +1,9 @@
 <div class="container">
-    <div>
+    <div class="mt-1">
         <button class="btn btn-dark mr-1" (click)="BackBtnClick()"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
         <button class="btn btn-dark" [disabled]="WrongId" (click)="EditBtnClick()">Edit this publisher</button>
     </div>
-    <div class="mt-2 border shadow shadow-sm">
+    <div class="mt-2 border shadow shadow-sm p-2">
         <h4>Publisher details</h4>
         <div>
             <h5>Name: {{CertainPublisher.name}}</h5>

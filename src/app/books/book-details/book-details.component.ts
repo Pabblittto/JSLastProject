@@ -3,7 +3,7 @@ import { Publisher } from '../../Models/Publisher';
 import { Author } from '../../Models/Author';
 import { Book } from '../../Models/Book';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -19,7 +19,8 @@ export class BookDetailsComponent implements OnInit {
     private route:ActivatedRoute, 
     private location:Location,
     private connection:ConnectionService,
-    private notifications:NotificationService
+    private notifications:NotificationService,
+    private router:Router
     ) { }
 
   ngOnInit() {
@@ -58,6 +59,7 @@ export class BookDetailsComponent implements OnInit {
           },
           err=>{
             this.BookPublisher={name:"Not Found :c",city:"",phoneNumber:undefined,id:1};
+            
           }
         );
       },
@@ -74,7 +76,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   EditBtnClick(){
-    
+    this.router.navigate([`books/edit/${this.BookId}`]);
   }
 
 

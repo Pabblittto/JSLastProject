@@ -73,6 +73,8 @@ export class AuthorDetailsComponent implements OnInit {
       err=>{
         console.log(err);
         this.notifications.AddMessage("Can not download author from server, check log for more details");
+        this.CertainAuthor={id:undefined,name:"NOT FOUND",surname:"NOT FOUND"};
+        this.WrongId=true;
       }
       
     )

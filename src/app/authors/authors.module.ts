@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 import { AddAuthorComponent } from './add-author/add-author.component';
 import { AuthorListElementComponent } from './author-list-element/author-list-element.component';
 import { AuthorDetailsComponent } from './author-details/author-details.component';
+import { AuthorEditComponent } from './author-edit/author-edit.component';
 
 
 
 @NgModule({
   declarations: [    
-    AuthorListComponent, AddAuthorComponent, AuthorListElementComponent, AuthorDetailsComponent],
+    AuthorListComponent, AddAuthorComponent, AuthorListElementComponent, AuthorDetailsComponent, AuthorEditComponent],
   imports: [
     CommonModule,
     FormsModule,
