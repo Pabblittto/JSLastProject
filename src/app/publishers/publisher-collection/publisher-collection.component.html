@@ -5,9 +5,13 @@
             <button class="btn btn-primary col-auto" (click)="AddBtnClick()">Add Publisher <i class="far fa-plus-square"></i></button>            
         </div>
         <div class="row">
-            <h6 class="col-auto">Search</h6>
-            <input type="text" class="form-control col-3" placeholder="Phrase"/>     
-            <button class="btn btn-primary">Search <i class="fas fa-search"></i></button>       
+            <h6 class="col-auto">Search by name</h6>
+            <form class="col row">
+                <input type="text" class="form-control col-3 mr-1" placeholder="Phrase" [(ngModel)]="SearchInput" name="Searchinput"/>     
+                <button class="btn btn-primary" type="submit" (click)="SearchBtnClick()" >Search <i class="fas fa-search"></i></button>  
+                <button class="btn  btn-danger ml-1" [hidden]="!SearchInput" (click)="ClearInputBtnClick()" >X</button>
+            </form>
+     
         </div>
         <div class="row text-center">
             <div class="col-3 Section">
@@ -21,6 +25,7 @@
             </div>
         </div>
     </div>
+    <div class="text-center" [hidden]="!NoPublishers" ><h4>No Publishers to display</h4></div>
     <div class="m-1" *ngFor="let publisher of DisplayPyblisherList" >
         <app-publisher-list-element  [ThisPublisher]="publisher" ></app-publisher-list-element>
     </div>

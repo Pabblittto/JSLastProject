@@ -52,7 +52,11 @@ export class AuthorDetailsComponent implements OnInit {
           this.connection.GetObjectsForCertainAuthor(this.CertainAuthor.id).subscribe(
             res=>{
               tmpObjectList=[...res];
-
+              if(res.length==0){
+                this.BookTitle.push("No Books");
+                return;
+              }
+              
               for(let i=0;i<tmpObjectList.length;i++){
                 this.connection.GetCertainBook(tmpObjectList[i].bookId).subscribe(
                   res=>{
@@ -60,10 +64,11 @@ export class AuthorDetailsComponent implements OnInit {
                   }
                 );
               }
+            },
+            err=>{
+              this.BookTitle.push("No Books");
             }
           )
-
-
       },
       err=>{
         console.log(err);
@@ -75,7 +80,7 @@ export class AuthorDetailsComponent implements OnInit {
   }
 
   BackBtnClick(){
-    this.location
+    this.location.back();
   }
 
   EditBtnClick(){

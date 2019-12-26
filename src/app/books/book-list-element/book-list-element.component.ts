@@ -1,3 +1,4 @@
+import { DictionaryBookAuthor } from './../../Models/DictionaryBookAuthor';
 import { NotificationService } from 'src/app/services/notification.service';
 import { ConnectionService } from './../../services/connection.service';
 import { Book } from '../../Models/Book';
@@ -18,13 +19,13 @@ export class BookListElementComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() ThisBook:Book;
+  @Input() ThisBook:DictionaryBookAuthor;
 
   ShowQuestion:boolean=false;
   ShowLoadingText:boolean=false;
 
-  OpenDetails(Id:number){
-    window.location.href=`books/details/${Id}`;
+  OpenDetails(){
+    window.location.href=`books/details/${this.ThisBook.Bookid}`;
   }
 
   DeleteBtnClick(){
@@ -33,7 +34,7 @@ export class BookListElementComponent implements OnInit {
 
   FinalDeleteBtnClick(){
     this.ShowQuestion=true;
-    this.connection.DeleteCertainBook(this.ThisBook.id).subscribe(
+    this.connection.DeleteCertainBook(this.ThisBook.Book.id).subscribe(
       res=>{
         this.notifications.AddMessage("Book deleted succesfully");
         window.location.reload();

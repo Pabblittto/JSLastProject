@@ -1,26 +1,26 @@
 <div class="row border-bottom">
     <div class="col-2 text-center">
-        <h6>{{ThisBook.title}}</h6>
+        <h6>{{ThisBook.Book.title}}</h6>
     </div>
     <div class="col-2 text-center">
-        <h6>{{ThisBook.genre}}</h6>
+        <h6>{{ThisBook.Book.genre}}</h6>
 
     </div>
     <div class="col-2 text-center">
-        <h6> {{ThisBook.releaseDate}}</h6>
+        <h6> {{ThisBook.Book.releaseDate}}</h6>
     </div>
     <div class="col-3 text-center">
-        <app-authors-small-rectangle [BookId]="ThisBook.id"></app-authors-small-rectangle>
+        <h6 *ngFor="let author of ThisBook.Authors" >{{author.name}} {{author.surname}}</h6>
     </div>
     <div class="col-3 text-center">
-        <button  class="btn btn-dark" (click)="OpenDetails(ThisBook.id)">Details/Edit</button>
+        <button  class="btn btn-dark" (click)="OpenDetails()">Details/Edit</button>
         <button class="btn btn-danger ml-1" (click)="DeleteBtnClick()" >Delete</button>
     </div>
 </div>
 
 <div class="text-center" [ngClass]="{'QuestionDiv':ShowQuestion}">
     <div class="MainMesage" [ngClass]="{'MainMessageHidde':!ShowQuestion}">
-       <h6 class="mt-2">Do you want to delete book: "{{ThisBook.title}}"?</h6> 
+       <h6 class="mt-2">Do you want to delete book: "{{ThisBook.Book.title}}"?</h6> 
        <div class="row text-center">
            <div class="col">
                 <button class="btn btn-danger" (click)="FinalDeleteBtnClick()">Delete</button>
