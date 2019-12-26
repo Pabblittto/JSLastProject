@@ -10,22 +10,23 @@
             <form class="row">
                 <h6 class="col-auto">Sort </h6>
                 <div class="col-auto">
-                    <select class="form-control" >
+                    <select class="form-control" [(ngModel)]="SelectedSortingWayPool" name="selectSortWay">
                         <option value="0" selected>--Choose--</option>
-                        <option value="1">Alphabetically Asc</option>
-                        <option value="2">Alphabetically Desc</option>
+                        <option value="1">Ascending</option>
+                        <option value="2">Descending</option>
                     </select>
                 </div>
                 <h6 class="col-auto">by:</h6>
                 <div class="col-auto">
-                    <select class="form-control" [(ngModel)]="SelectedSortPool">
+                    <select class="form-control" [(ngModel)]="SelectedSortPool" name="selectSortPool">
                         <option value="0" selected>--Choose--</option>
                         <option value="1">Title</option>
                         <option value="2">Genre</option>
+                        <option value="3">Date</option>
                     </select>
                 </div>
-                <button class="btn btn-primary" type="submit" (click)="SortBtnClick()" >Sort <i class="fas fa-sort"></i></button>
-                <button class="btn btn-danger ml-1" (click)="SortClearBtnClick()" >X</button>
+                <button class="btn btn-primary" type="submit" (click)="SortBtnClick()" [disabled]="SelectedSortingWayPool=='0' || SelectedSortPool=='0'" >Sort <i class="fas fa-sort"></i></button>
+                <button class="btn btn-danger ml-1" (click)="SortClearBtnClick()" [hidden]="SelectedSortingWayPool=='0' || SelectedSortPool=='0'" >X</button>
 
             </form>
         </div>

@@ -84,6 +84,8 @@ export class BookCollectionComponent implements OnInit {
 
   SearchBtnClick(){
     this.DisplayingDictionaryBookAuthor=[...this.OriginalDictionaryBookAuthor];// resetujemy zawartość wyswietlana
+    this.NoBooks=false;
+    
     switch (this.SelectedSearchPool) {
       case "1":// title
         this.DisplayingDictionaryBookAuthor= this.DisplayingDictionaryBookAuthor.filter((element=>{
@@ -133,17 +135,107 @@ export class BookCollectionComponent implements OnInit {
     this.SearchInput="";
     this.SelectedSearchPool="0";
     this.DisplayingDictionaryBookAuthor=[...this.OriginalDictionaryBookAuthor];// resetujemy zawartość wyswietlana
+    this.SortBtnClick();
     this.NoBooks=false;
 
   }
 
   SortClearBtnClick(){
-
+    this.SelectedSortPool="0";
+    this.SelectedSortingWayPool="0";
+    this.SearchBtnClick();
   }
 
   SortBtnClick(){
-    console.log("Sortingg");
+    
+    if(this.SelectedSortPool=="1" && this.SelectedSortingWayPool=="1")// ascending title
+    {
+      this.DisplayingDictionaryBookAuthor.sort(this.ComparingTitleAscending);
+    }else  if(this.SelectedSortPool=="1" && this.SelectedSortingWayPool=="2")// descending title
+    {
+      this.DisplayingDictionaryBookAuthor.sort(this.ComparingTitleDescending);
+    }else if(this.SelectedSortPool=="2" && this.SelectedSortingWayPool=="1")//ascending genre
+    {
+      this.DisplayingDictionaryBookAuthor.sort(this.ComparingGenreAscending);
+    }else if(this.SelectedSortPool=="2" && this.SelectedSortingWayPool=="2")// descending genre
+    {
+      this.DisplayingDictionaryBookAuthor.sort(this.ComparingGenreDescending);
+    }else if(this.SelectedSortPool=="3" && this.SelectedSortingWayPool=="1")//ascending date
+    {
+      this.DisplayingDictionaryBookAuthor.sort(this.ComparingDateAscending);
+    }else if(this.SelectedSortPool=="3" && this.SelectedSortingWayPool=="2")// descending date
+    {
+      this.DisplayingDictionaryBookAuthor.sort(this.ComparingDateDescending);
+    }
+    
+
+
   }
+
+
+  private ComparingTitleDescending(A:DictionaryBookAuthor,B:DictionaryBookAuthor){
+    if(A.Book.title.toLowerCase()>B.Book.title.toLowerCase())
+      return -1;
+
+    if(A.Book.title.toLowerCase()<B.Book.title.toLowerCase())
+      return 1;
+
+    return 0;
+  } 
+
+  private ComparingTitleAscending(A:DictionaryBookAuthor,B:DictionaryBookAuthor){
+    if(A.Book.title.toLowerCase()>B.Book.title.toLowerCase())
+      return 1;
+
+    if(A.Book.title.toLowerCase()<B.Book.title.toLowerCase())
+      return -1;
+
+    return 0;
+  } 
+
+  private ComparingGenreDescending(A:DictionaryBookAuthor,B:DictionaryBookAuthor){
+    if(A.Book.genre.toLowerCase()>B.Book.genre.toLowerCase())
+    return -1;
+
+  if(A.Book.genre.toLowerCase()<B.Book.genre.toLowerCase())
+    return 1;
+
+  return 0;
+  }
+
+  private ComparingGenreAscending(A:DictionaryBookAuthor,B:DictionaryBookAuthor){
+    if(A.Book.genre.toLowerCase()>B.Book.genre.toLowerCase())
+    return 1;
+
+  if(A.Book.genre.toLowerCase()<B.Book.genre.toLowerCase())
+    return -1;
+
+  return 0;
+  }
+
+  private ComparingDateDescending(A:DictionaryBookAuthor,B:DictionaryBookAuthor){
+    if(A.Book.releaseDate.toLowerCase()>B.Book.releaseDate.toLowerCase())
+    return -1;
+
+  if(A.Book.releaseDate.toLowerCase()<B.Book.releaseDate.toLowerCase())
+    return 1;
+
+  return 0;
+  }
+  
+  private ComparingDateAscending(A:DictionaryBookAuthor,B:DictionaryBookAuthor){
+    if(A.Book.releaseDate.toLowerCase()>B.Book.releaseDate.toLowerCase())
+    return 1;
+
+  if(A.Book.releaseDate.toLowerCase()<B.Book.releaseDate.toLowerCase())
+    return -1;
+
+  return 0;
+  }
+
+
+
+
 
   AddBtnClick(){
     this.router.navigate(['books/addbook']);

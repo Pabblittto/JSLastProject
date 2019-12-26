@@ -1,14 +1,24 @@
 <div class="container">
     <div class="row m-1">
         <h4 class="col-auto">Author Collection</h4>
-        <button class="btn btn-primary mr-1 col-auto" (click)="AddAuthorBtnClick()">Add Author<i class="far fa-plus-square"></i></button>
+        <button class="btn btn-primary mr-1 col-auto" (click)="AddAuthorBtnClick()">Add Author <i class="far fa-plus-square"></i></button>
     </div>
     <div class="row m-1">
-        <h6 class="col-auto">Search</h6>
-        <input class="form-control col-2" placeholder="Phrase"/>
-        <select>
-            <option>czy po nazwisku i tak dalej </option>
-        </select>
+        <form class="col row">
+            <h6 class="col-auto">Search</h6>
+            <input class="form-control col-2" placeholder="Phrase" [(ngModel)]="SearchInput" name="SearchInput"/>
+            <div class="col-auto">
+                <select class="form-control" [(ngModel)]="SelectSearchOption" name="selectSearch">
+                    <option value="0" selected>--Choose--</option>
+                    <option value="1">Name </option>
+                    <option value="2">Surname </option>
+                </select>            
+            </div>  
+            <button class="btn btn-primary col-auto" (click)="SearchBtnClick()" [disabled]="!SearchInput || SelectSearchOption=='0'" >Search <i class="fas fa-search"></i></button>
+            <button class="btn btn-danger ml-1" [hidden]="!SearchInput || SelectSearchOption=='0'" (click)="SearchClearBtnClick()">X</button>
+        </form>
+
+
     </div>
     <div class="row mt-1 border-bottom border-secondary">
         <div class="text-center col-3 Properties">
@@ -23,6 +33,7 @@
         <div class="text-center col-3 Properties">
         </div>
     </div>
+    <div class="text-center" [hidden]="!NoAuthors"><h4>No Authors to display</h4></div>
     <app-author-list-element *ngFor="let author of DisplayAuthorsCollection" [ThisAuthor]="author"></app-author-list-element>
 
 
