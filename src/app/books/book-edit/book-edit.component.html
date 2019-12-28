@@ -1,1 +1,80 @@
-<p>book-edit works!</p>
+<div class="container pt-2">
+    <div class="">
+        <button class="btn btn-dark" (click)="BackBtnClick()"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+    </div>
+    <div class="row shadow shadow-sm border">
+        <div class="col-6 offset-3">
+            <h4>Book Editing</h4>    
+            <form>
+                <div class="form-group">
+                    <label>Title:</label>
+                    <input type ="text" class="form-control" [disabled]="WrongId" [(ngModel)]="ThisBook.title" name="Ttile" />                    
+                </div>
+                <div class="form-group">
+                    <label>Release Date:</label>
+                    <input type ="date" class="form-control" [disabled]="WrongId" [(ngModel)]="ThisBook.releaseDate" name="surname" />                    
+                </div>
+                <div class="form-group">
+                    <label>Number of Pages:</label>
+                    <input type ="number" class="form-control" [disabled]="WrongId" [(ngModel)]="ThisBook.pages" name="pages" />                    
+                </div>
+                <div class="form-group row">
+                    <label class="col-auto">Publishers:</label>
+                    <select class="form-control col" [(ngModel)]="ThisBook.publisherId" name="publisher" [disabled]="WrongId">
+                        <option *ngFor="let publisher of PublishersList" value="{{publisher.id}}">{{publisher.name}}</option>
+                    </select>                    
+                </div>
+                <div class="form-group row">
+                    <label class="col-auto">Genre:</label>
+                    <select class="form-control col" [(ngModel)]="ThisBook.genre" name="genre" [disabled]="WrongId">
+                        <option *ngFor="let genre of GenresList" value="{{genre}}">{{genre}}</option>
+                    </select>                    
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-auto">
+                        <select class="form-control" [(ngModel)]="SelectedAuthor" name="author" [disabled]="WrongId" >
+                            <option value="" selected>Select author</option>
+                            <option *ngFor="let author of AuthorsList" value="{{author.id}}">{{author.surname}} {{author.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" [disabled]="WrongId" (click)="AddAuthorClick()">Add <i class="fas fa-long-arrow-alt-right"></i></button>
+                    </div>
+                    <div class="col">
+                        <h6>Assigned authors:</h6>
+                        <div>
+                            <div *ngIf="BookAuthorsList.length!=0; else NoAuthors">
+                                <div class="row m-1" *ngFor="let author of BookAuthorsList">
+                                    <h6  class="col-9">-{{author.surname}} {{author.name}}</h6>
+                                    <button class="btn btn-primary col-2" (click)="RemoveAuthorClick(author.id)">X</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <ng-template #NoAuthors><h6>No authors added</h6></ng-template>
+                        
+                    </div>
+                </div>
+
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="WrongId" (click)="UpdateBookBtnClick()">Update</button>
+                </div>
+            </form>     
+        </div>        
+    </div>
+</div>
+
+<div class="text-center" [ngClass]="{'QuestionDiv':ShowQuestion}">
+    <div class="MainMesage" [ngClass]="{'MainMessageHidde':!ShowQuestion}">
+       <h6 class="mt-2">Do you want to update {{OriginalBook.title}}</h6> 
+       <div class="row text-center">
+           <div class="col">
+                <button class="btn btn-danger" (click)="FinalUpdateBookBtnClick()" [disabled]="DisableUpdateBtn">Update</button>
+           </div>
+            <div class="col">
+                <button class="btn btn-secondary" (click)="CancelBtnClick()">Cancel</button>   
+            </div>
+</div>
+

@@ -5,6 +5,7 @@ export class Book{
     releaseDate:string;
     publisherId:number;
     genre:string;
+    pages:number;
 }
 
 export enum Genres{

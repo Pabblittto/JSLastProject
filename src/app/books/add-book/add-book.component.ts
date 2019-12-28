@@ -57,7 +57,7 @@ export class AddBookComponent implements OnInit {
   AuthorsList:Author[]=[];
   GenresList:string[]=[];
   
-  NewBook:Book={id:undefined,publisherId:undefined,title:"",releaseDate:"",genre:""};
+  NewBook:Book={id:undefined,publisherId:undefined,title:"",releaseDate:"",genre:"",pages:0};
   ChoosedAuthors:Author[]=[];
 
   BackBtnClick(){
@@ -89,6 +89,10 @@ export class AddBookComponent implements OnInit {
     if(this.NewBook.genre==""){
       good=false;
       this.notification.AddMessage("You need to assign genre to book!");
+    }
+    if(this.NewBook.pages==0){
+      good=false;
+      this.notification.AddMessage("You need to set number of pages");
     }
 
     if(good){// jeżeli dane są dobre

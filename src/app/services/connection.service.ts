@@ -87,6 +87,10 @@ export class ConnectionService {// serwis do łączenia się z bazą poprzez Obs
     return this.http.patch(`${this.BookAuthorUrl}/${Id}`,UpBookAuthor);
   }
 
+  DeleteBookAuthorWithCertainBookAndAuthorId(AuthorId:number,BookId:number){
+    return this.http.delete(`${this.BookAuthorUrl}?authorId=${AuthorId}&&bookId=${BookId}`);
+  }
+
   // Publisherssssssssssssssssssssssssssss
 
   GetCertainPublisher(Id:number):Observable<Publisher>{

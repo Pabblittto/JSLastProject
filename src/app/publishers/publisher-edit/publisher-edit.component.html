@@ -1,1 +1,40 @@
-<p>publisher-edit works!</p>
+<div class="container pt-2">
+    <div class="">
+        <button class="btn btn-dark" (click)="BackBtnClick()"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+    </div>
+    <div class="row shadow shadow-sm border">
+        <div class="col-6 offset-3">
+            <h4>Publisher Editing</h4>    
+            <form>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type ="text" class="form-control" [disabled]="WrongId" [(ngModel)]="ThisPublisher.name" name="Name" />                    
+                </div>
+                <div class="form-group">
+                    <label>City:</label>
+                    <input type ="text" class="form-control" [disabled]="WrongId" [(ngModel)]="ThisPublisher.city" name="city" />                    
+                </div>
+                <div class="form-group">
+                    <label>Phone number:</label>
+                    <input type ="number" class="form-control" [disabled]="WrongId" [(ngModel)]="ThisPublisher.phoneNumber" name="number" />                    
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="WrongId" (click)="UpdatePublisherBtnClick()">Update</button>
+                </div>
+            </form>     
+        </div>        
+    </div>
+</div>
+
+<div class="text-center" [ngClass]="{'QuestionDiv':ShowQuestion}">
+    <div class="MainMesage" [ngClass]="{'MainMessageHidde':!ShowQuestion}">
+       <h6 class="mt-2">Do you want to update publisher {{OriginalPublisher.name}}</h6> 
+       <div class="row text-center">
+           <div class="col">
+                <button class="btn btn-danger" (click)="FinalUpdateAuthorBtnClick()" [disabled]="DisableUpdateBtn">Update</button>
+           </div>
+            <div class="col">
+                <button class="btn btn-secondary" (click)="CancelBtnClick()">Cancel</button>   
+        </div>
+</div>
+

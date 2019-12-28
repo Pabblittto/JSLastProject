@@ -38,13 +38,13 @@ export class BookDetailsComponent implements OnInit {
 
   WrongId:boolean=false;
   BookId:number;
-  CertainBook:Book={ genre:"",id:undefined,publisherId:undefined,title:"",releaseDate:""};
+  CertainBook:Book={ genre:"",id:undefined,publisherId:undefined,title:"",releaseDate:"",pages:0};
   AuthorList:Author[];
   BookPublisher:Publisher={id:undefined,city:"",name:"",phoneNumber:1};
 
   WrongIdNumber(){
     this.WrongId=true;
-    this.CertainBook={id:undefined,genre:"Unknown",releaseDate:"Unknown",title:"Unknown",publisherId:undefined};
+    this.CertainBook={id:undefined,genre:"Unknown",releaseDate:"Unknown",title:"Unknown",publisherId:undefined,pages:0};
   }
 
 
