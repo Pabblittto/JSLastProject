@@ -8,7 +8,6 @@ import { ConnectionService } from './../../services/connection.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from './../../services/notification.service';
 import { Component, OnInit } from '@angular/core';
-import { connect } from 'net';
 
 @Component({
   selector: 'app-book-edit',
